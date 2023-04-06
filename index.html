@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/bankDetailsChecker/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="bank">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>bank</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = '2795502619';
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+
+  <div class="container" id="loading">
+    <div class="spinner"></div>
+    <img src="https://gallery.flutter.dev/icons/Icon-192.png" alt="Flutter">
+  </div>
+  <style>
+  .container {
+    position: relative; /* Set container to relative position */
+    display: flex; /* Set container to use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Set container to full height of viewport */
+  }
+  
+  .spinner {
+    position: absolute; /* Set spinner to absolute position */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    z-index: 1; /* Set spinner above image */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  .spinner::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 6px solid #ccc; /* Grey border */
+    border-top-color: #666; /* Darker grey top border for animation */
+    animation: spinner 0.8s linear infinite; /* Animation */
+  }
+  
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  img {
+    max-width: 40%;
+    max-height: 40%;
+    animation: zoom-out 5s ease-in-out infinite; /* Zoom out animation */
+  }
+  
+  @keyframes zoom-out {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2); /* Zoom out to 120% size */
+    }
+    100% {
+      transform: scale(1); /* Zoom back to original size */
+    }
+  }
+
+  </style>
+
+  <script>
+    window.addEventListener('load', function(ev) {
+      let loading = document.querySelector('#loading');
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            loading.remove();
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
